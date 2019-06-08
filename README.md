@@ -9,7 +9,7 @@ If you find this code useful for your research you could cite
 ```
 @inproceedings{zhu2019transferable,
   title={Transferable Clean-Label Poisoning Attacks on Deep Neural Nets},
-  author={Zhu, Chen and Huang, W Ronny and Li, Hengduo and Taylor, Gavin and Studer, Christoph and Goldstein, Tom},
+  author={Zhu, Chen and Huang, W Ronny and Shafahi, Ali and, Li, Hengduo and Taylor, Gavin and Studer, Christoph and Goldstein, Tom},
   booktitle={International Conference on Machine Learning},
   pages={7614--7623},
   year={2019}
