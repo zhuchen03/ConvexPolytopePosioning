@@ -1,3 +1,6 @@
+# Update Jan 10, 2020
+Fixed a bug with end2end training. args.end2end were not passed to make_convex_polytope_poisons before. Please try again if you did not find the end2end setting working!
+
 # ConvexPolytopePosioning
 This repository provides codes to reproduce the major experiments in the paper [Transferable Clean-Label Poisoning Attacks on Deep Neural Nets](https://arxiv.org/abs/1905.05897), (ICML 2019).
 
