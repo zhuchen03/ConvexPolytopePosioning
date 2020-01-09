@@ -153,7 +153,8 @@ if __name__ == '__main__':
                                                     poison_label=args.poison_label,
                                                     tol=args.tol,
                                                     start_ite=args.resume_poison_ite,
-                                                    poison_init=poison_init)
+                                                    poison_init=poison_init,
+                                                    end2end=args.end2end)
 
         torch.save({'poison': poison_tuple_list, 'idx': base_idx_list, 'recon-loss': recon_loss},
                    os.path.join(chk_path, "poison.pth"))
