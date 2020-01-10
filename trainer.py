@@ -118,9 +118,12 @@ def get_CP_loss_end2end(net_list, target_feature_list, poison_batch, s_coeff_lis
 
     for nn, (net, target_feats, poison_feats) in enumerate(zip(net_list, target_feature_list, poison_feat_mat_list)):
         for n_block, (pfeat, tfeat) in enumerate(zip(poison_feats, target_feats)):
-            s_coeff_list[nn][n_block] = least_squares_simplex(A=pfeat.t().detach(), b=tfeat.t().detach(),
+            pfeat_ = pfeat.view(pfeat.size(0), -1).t().detach()
+            tfeat_ = tfeat.view(-1, 1).detach()
+
+            s_coeff_list[nn][n_block] = least_squares_simplex(A=pfeat_, b=tfeat_,
                                             x_init=s_coeff_list[nn][n_block], tol=tol)
-            residual = tfeat - torch.sum(s_coeff_list[nn][n_block] * pfeat, 0, keepdim=True)
+            residual = tfeat - torch.sum(s_coeff_list[nn][n_block].unsqueeze(2).unsqueeze(3) * pfeat, 0, keepdim=True)
             target_norm_square = torch.sum(tfeat ** 2)
             recon_loss = 0.5 * torch.sum(residual**2) / target_norm_square
 
